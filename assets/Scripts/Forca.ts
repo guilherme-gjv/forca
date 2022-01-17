@@ -50,12 +50,14 @@ export default class Forca extends cc.Component {
 		this.startGame();
     }
 
-	arrayToString(a: string[]): string{
-		let aux: string = "";
-		a.forEach((s)=>{
-			aux = aux + s;
-		})
-		return aux;
+	startGame(){	
+		this.palavraSecreta = this.palavras[Math.floor(Math.random() * this.palavras.length)];
+		console.log(this.palavraSecreta);
+		this.generateEmptyLabel();
+		this.wordLabel.string = this.arrayToString(this.emptyLabel);
+		this.result.string = "";
+		this.activeDesativeButton(false);
+		this.activeDesativeButton(true);
 	}
 
     buildKeyboardList(){
@@ -64,11 +66,26 @@ export default class Forca extends cc.Component {
             this.buttons.push()
         }
     }
+	
+	activeDesativeButton(actived: boolean){
+		this.buttons.forEach((b)=>{
+			b.active = actived;
+		})
+	}
 
     start () {
 		
     }
 
+	arrayToString(a: string[]): string{
+		let aux: string = "";
+		a.forEach((s)=>{
+			aux = aux + s;
+		})
+		return aux;
+	}
+
+	// click event
     updateSecretWord(event: cc.Event, letter: string){
 		let acertou: boolean = false;
 		for(let i = 0; i < this.wordLabel.string.length; i++){
@@ -109,22 +126,6 @@ export default class Forca extends cc.Component {
 			this.activeDesativeButton(false);
 			this.result.string = "GANHOU. FLAMENGO O O O O";
 		}
-	}
-
-	activeDesativeButton(actived: boolean){
-		this.buttons.forEach((b)=>{
-			b.active = actived;
-		})
-	}
-
-	startGame(){	
-		this.palavraSecreta = this.palavras[Math.floor(Math.random() * this.palavras.length)];
-		console.log(this.palavraSecreta);
-		this.generateEmptyLabel();
-		this.wordLabel.string = this.arrayToString(this.emptyLabel);
-		this.result.string = "";
-		this.activeDesativeButton(false);
-		this.activeDesativeButton(true);
 	}
 
 	generateEmptyLabel(): number{
