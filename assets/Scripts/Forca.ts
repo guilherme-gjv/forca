@@ -15,6 +15,9 @@ export default class Forca extends cc.Component {
 	@property(cc.Label)
 	victories: cc.Label = null;
 
+	@property(cc.Label)
+	result: cc.Label = null;
+
 	turno: number = 0
     buttons: cc.Node[]
 	
@@ -43,7 +46,6 @@ export default class Forca extends cc.Component {
         })
 		
 		this.victories.string = `Vitórias: ${this.pontos}`;
-		
 		this.fails.string = `Erros: ${this.erros}`;
 		this.startGame();
     }
@@ -95,14 +97,17 @@ export default class Forca extends cc.Component {
 			this.erros = 0;
 			this.fails.string = `Erros: ${this.erros}`;
 			this.activeDesativeButton(false); 
+			this.result.string = "PERDEU\nF"
+			
 		}
 	}
 
 	verifyVictory() {
 		if(this.wordLabel.string == this.arrayToString(this.palavraSecreta)){
 			this.pontos++;
-			//this.victories.string = `Vitórias: ${this.pontos}`;
+			this.victories.string = `Vitórias: ${this.pontos}`;
 			this.activeDesativeButton(false);
+			this.result.string = "GANHOU. FLAMENGO O O O O";
 		}
 	}
 
@@ -117,6 +122,7 @@ export default class Forca extends cc.Component {
 		console.log(this.palavraSecreta);
 		this.generateEmptyLabel();
 		this.wordLabel.string = this.arrayToString(this.emptyLabel);
+		this.result.string = "";
 		this.activeDesativeButton(false);
 		this.activeDesativeButton(true);
 	}
