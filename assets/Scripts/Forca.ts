@@ -53,6 +53,7 @@ export default class Forca extends cc.Component {
 	startGame(){	
 		this.palavraSecreta = this.palavras[Math.floor(Math.random() * this.palavras.length)];
 		console.log(this.palavraSecreta);
+		this.numberOfChar.string = `Número de Letras: ${this.palavraSecreta.length}`;
 		this.generateEmptyLabel();
 		this.wordLabel.string = this.arrayToString(this.emptyLabel);
 		this.result.string = "";
