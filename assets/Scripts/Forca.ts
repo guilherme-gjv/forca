@@ -105,8 +105,11 @@ export default class Forca extends cc.Component {
 			this.verifyFail();
 			
 		}
+		
 		this.node.getChildByName("keyboard")
-		.getChildByName(letter).active = false;
+		.getChildByName(letter.toLowerCase())
+		.getComponent(cc.Button)
+		.interactable = false;
     }
 
 	verifyFail() {
