@@ -72,8 +72,10 @@ export default class Forca extends cc.Component {
 	
 	activeDesativeButton(actived: boolean){
 		this.buttons.forEach((b)=>{
-			b.active = actived;
-		})
+			b.getComponentsInChildren(cc.Button).forEach((bb)=>{
+				bb.interactable = actived;
+			});	
+		});
 	}
 
     start () {
