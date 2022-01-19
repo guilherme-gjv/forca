@@ -57,7 +57,9 @@ export default class Forca extends cc.Component {
 		this.generateEmptyLabel();
 		this.wordLabel.string = this.arrayToString(this.emptyLabel);
 		this.result.string = "";
+		this.erros = 0;
 		this.activeDesativeButton(false);
+		this.fails.string = `Erros: ${this.erros}`;
 		this.activeDesativeButton(true);
 	}
 
