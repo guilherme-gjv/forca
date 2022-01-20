@@ -122,7 +122,7 @@ export default class Forca extends cc.Component {
 			this.erros = 0;
 			this.fails.string = `Erros: ${this.erros}`;
 			this.activeDesativeButton(false); 
-			this.result.string = "PERDEU\nF"
+			this.result.string = "PERDEU\nF";
 			
 		}
 	}
